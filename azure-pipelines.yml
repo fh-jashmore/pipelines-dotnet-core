@@ -27,3 +27,9 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'dd71866a-faf4-44a6-b21b-2a3e3ac0826d'
+    WebAppName: 'Testing'
+    Package: $(System.ArtifactsDirectory)/**/*.zip
